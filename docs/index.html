@@ -1,0 +1,667 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<link rel="stylesheet" href="dist/theme/blood.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async
+				src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+				
+		</script>
+		  <script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+			tex2jax: {
+			  inlineMath: [['$','$'], ['\\(','\\)']],
+			  processEscapes: true
+			})
+		</script>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+    <hr />
+    <hr />
+    <p> </p>
+    <h3>
+        Selective Harmonic Elimination via Feedback Optimal Control
+    </h3>
+        <hr />
+    <hr />
+    <h4>Jesús Oroya - Dic 2020</h4>
+</section>
+
+<section>
+
+
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+
+<hr />
+<h4> 1. Definición del problema</h4>
+<hr />
+
+<section>
+
+<p>Consideraremos una función escalón:</p>
+
+$$ \{ f(\tau) \ | \ \tau \in [0,2\pi]\} \  \text{ y } \ f(\tau) \in \{-1,1\}$$
+
+<p>Con simetría de media onda:</p>
+
+$$ f(\tau) = -f(\tau+\pi) $$
+
+</section>
+<!-- --------------------- -->
+<section>
+
+<p>Cuyos coeficientes de Fourier se pueden escribir como:</p>
+
+$$ 
+a_i = \frac{2}{\pi} \int_0^\pi f(\tau ) \cos(i \tau)d\tau \ | \ \forall i \ odd 
+$$
+
+$$
+b_j = \frac{2}{\pi} \int_0^\pi f(\tau)  \sin(j \tau) d\tau \ | \ \forall j \ odd 
+$$
+</section>
+<!-- --------------------- -->
+<section>
+
+
+<p>Consideramos dos conjuntos de números impares \( \mathcal{E}_a \) y \( \mathcal{E}_b\) con cardinalidades \(|\mathcal{E}_a| = N_a \) y  \(|\mathcal{E}_b| = N_b\)</p>
+<p>Consideramos los vectores objetivo \({a}_T  \in \mathbb{R}^{N_a}\) y \({b}_T  \in \mathbb{R}^{N_b}\)</p>
+<p> Buscamos una función  \( f(\tau ) \)  cuyos coeficientes de Fourier satisfagan: </p>
+
+$$
+a_i = ({a}_T)_i \ | \  \forall i \in \mathcal{E}_a 
+$$
+
+$$
+b_j = ({b}_T)_j \ | \  \forall \ j \in \mathcal{E}_b
+$$
+
+</section>
+<!-- --------------------- -->
+</section>
+
+<section>
+
+
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+
+<hr />
+<h4> 2. SHE como un sistema dinámico</h4>
+<hr />
+
+<section>
+
+<p>Podemos re-escribir los coeficientes como:</p>
+
+$$ 
+\alpha_i(\tau) = \frac{2}{\pi}\int_0^\tau f(\tau) \cos(i\tau)d\tau 
+\Rightarrow
+\begin{cases} 
+    \dot{\alpha_i}(\tau) &amp; = \frac{2}{\pi}f(\tau)\cos(i\tau) \\  
+    \alpha_i(0) &amp; = 0       
+\end{cases}
+$$
+
+$$
+\beta_j(\tau) = \frac{2}{\pi}\int_0^\tau f(\tau) \sin(j\tau)d\tau 
+\Rightarrow
+\begin{cases} 
+    \dot{\beta}_j(\tau) &amp; = \frac{2}{\pi}f(\tau)\sin(j\tau) \\  
+    \beta_j(0) &amp; = 0       
+\end{cases}
+$$
+
+<p>
+Entonces \(\alpha_i(\pi)\) y \(\beta_j(\pi)\) corresponden a los coeficientes de Fourier \(a_i\) y \(b_j\) respectivamente.
+</p>
+
+</section>
+
+<!-- --------------------- -->
+
+<section>
+<p>Tomamos como ejemplo \( \mathcal{E}_a = \{1\} \) y \( \mathcal{E}_b = \{1\} \). Esto nos da el siguiente sistema dinámico:</p>
+
+$$
+\begin{cases}
+    \alpha_1 = (2/\pi) \cos(\tau)f(\tau) &amp; \alpha_1(0) = 0 \\
+    \beta_1  = (2/\pi) \sin(\tau)f(\tau)  &amp; \beta_1(0) = 0
+\end{cases}
+$$
+
+<p>
+Veamos como se comporta esta dinámica con un control \(f(\tau)\) dado.
+</p>
+</section>
+
+<!-- --------------------- -->
+
+<section>
+<p>Evolución del sistema dinámico:</p>
+<video controls="" width="80%" src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/peaks.mp4"></video>
+</section>
+
+ <!-- --------------------- -->
+
+ <section>
+ 
+<p> Cambio de variable \(\alpha'(\tau) = a_T - \alpha(\tau)\) y  \(\beta'(\tau) = b_T - \beta(\tau)\)</p>
+
+$$ 
+\begin{cases} 
+    \dot{\alpha_i'}(\tau) &amp; = -\frac{2}{\pi}f(\tau)\cos(i\tau) \\  
+    \alpha_i'(0) &amp; = \textcolor{red}{a_T^i}      
+\end{cases}
+$$
+
+$$
+
+\begin{cases} 
+    \dot{\beta_j'}(\tau) &amp; = -\frac{2}{\pi}f(\tau)\sin(j\tau) \\  
+    \beta_j'(0) &amp; = \textcolor{red}{b_T^i}        
+\end{cases}
+$$
+
+<p>Si el sistema termina en \(\alpha_i'(\pi) = 0\) y \(\beta_j'(\pi) = 0\) entonces las condiciones iniciales \(\textcolor{red}{a_T^i}\) y \(\textcolor{red}{b_T^j}\) son los coefientes de Fourier de \(f(\tau)\)
+</p>
+</section> 
+
+
+<!-- --------------------- -->
+
+<section>
+<p>Tomamos como ejemplo \( \mathcal{E}_a = \{1\} \) y \( \mathcal{E}_b = \{1\} \). Esto nos da el siguiente sistema dinámico:</p>
+
+$$
+\begin{cases}
+    \alpha_1 = -(2/\pi) \cos(\tau)f(\tau) &amp; \alpha_1(0) = a_T^1 \\
+    \beta_1  = -(2/\pi) \sin(\tau) f(\tau) &amp; \beta_1(0) = b_T^1
+\end{cases}
+$$
+
+<p>
+Veamos como se comporta esta dinámica con un control \(f(\tau)\) dado.
+</p>
+</section>
+
+<!--  -->
+
+<section>
+<p>Evolución del sistema dinámico inverso</p>
+<video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/peaks-rev.mp4" controls="" width="80%">
+</video>
+</section>
+
+
+
+</section>
+
+<!--  -->
+
+<section>
+
+
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+
+<hr />
+<h4> 3. Problema de control óptimo</h4>
+<hr />
+
+<section>
+<p>El problema de control se puede escribir como:</p>
+
+$$
+    \min_{f(\tau) \in \{-1,1\}} \Big(\|{\alpha}(\pi)\|^2 + \|  {\beta}(\pi)\|^2 \Big)
+ $$
+<p>sujeto a:</p>
+
+ $$
+     \forall i \in \mathcal{E}_a\ \ 
+    \begin{cases}
+        \dot{\alpha}_i(\tau) = -(2/\pi) \cos(i\tau) f(\tau) &amp; \tau \in [0,\pi]\\
+        \alpha_i(0) = a_T^i
+    \end{cases} 
+$$
+
+$$
+     \forall j \in \mathcal{E}_b\ \ 
+    \begin{cases}
+        \dot{\beta}_j(\tau) = -(2/\pi) \sin(j\tau) f(\tau) &amp; \tau \in [0,\pi]\\
+        \beta_j(0) =  b_T^i
+    \end{cases} \\
+$$
+</section>
+
+<section>
+<p>Tomando la notación</p>
+
+$$
+\mathcal{D}^\alpha_i(\tau) = (2/\pi) \cos(j\tau)
+$$
+$$
+\mathcal{D}^\beta_j(\tau) = (2/\pi) \sin(j\tau)
+$$
+<p>Entonces podemos construir los vectores \(\mathcal{D}^\alpha\) y \(\mathcal{D}^\beta\) como:</p>
+
+$$
+\mathcal{D}^\alpha(\tau) = 
+[\mathcal{D}^\alpha_1(\tau),\mathcal{D}^\alpha_3(\tau),\mathcal{D}^\alpha_5(\tau), \dots ]
+$$
+
+$$
+\mathcal{D}^\beta(\tau) = [\mathcal{D}^\beta_1(\tau),\mathcal{D}^\beta_3(\tau),\mathcal{D}^\alpha_5(\tau), \dots ]
+$$
+<p>Entonces podemos re-escribir las ecuaciones como:</p>
+</section>
+<!--  -->
+
+
+<section>
+<p>El problema de control se puede escribir como:</p>
+
+$$
+\min_{f(\tau) \in \{-1,1\}} \Big(\|{\alpha}(\pi)\|^2 + \|  {\beta}(\pi)\|^2 \Big)
+$$
+
+<p>sujeto a:</p>
+
+ $$
+ \begin{cases}
+         \dot{\alpha}(\tau) = -\mathcal{D}_\alpha(\tau) f(\tau) &amp; \tau \in [0,\pi]\\
+        \alpha(0) = a_T
+ \end{cases}
+$$
+
+$$
+ \begin{cases}
+         \dot{\beta}(\tau) = -\mathcal{D}_\beta(\tau) f(\tau) &amp; \tau \in [0,\pi]\\
+        \beta(0) = b_T
+ \end{cases}
+$$
+
+</section>
+
+
+
+<section>
+    <p>Podemos reducir aún más la ecuación mediante la siguiente notación:</p>
+
+$$
+\mathcal{D}(\tau) = [\mathcal{D}_\alpha(\tau) \ \mathcal{D}_\beta(\tau) ]
+$$
+$$
+x(\tau) = [\alpha(\tau) \ \beta(\tau)]
+$$
+<p>Por tanto</p>
+
+$$
+x_0 = [a_T \ \ b_T]
+$$
+
+</section>
+<!--  -->
+<section>
+<p>El problema de control se puede escribir como:</p>
+
+$$
+    \min_{f(\tau) \in \{-1,1\}} \|x(\pi)\|^2 
+ $$
+<p>sujeto a:</p>
+
+ $$
+ \begin{cases}
+         \dot{x}(\tau) = -\mathcal{D}(\tau) f(\tau) &amp; \tau \in [0,\pi]\\
+        x(0) = x_0
+ \end{cases}
+$$
+</section>
+<!--  -->
+
+
+<section>
+
+<p>Para resolverlo numéricamente necesitamos tomar una discretización del intervalo \([0,\pi]\), es decir:</p>
+
+$$
+    \tau \in [0,\pi] \rightarrow {\{t_0,t_1,t_2, \dots,t_{K}\}}
+$$
+$$
+    t_0 = 0 \ | \ t_K = \pi
+$$
+
+<p>Tomaremos esta discretización equiespaciada en el tiempo.</p>
+</section>
+
+
+<!--  -->
+
+<section>
+    
+<p>De esta manera podemos referirnos a las funciones \(f(\tau)\) y \(x(\tau)\) como vectores:</p>
+
+$$ f(\tau) \rightarrow \vec{f}  = \{f_0,f_1,\dots,f_K\}$$
+$$ x(\tau) \rightarrow \vec{x}  = \{x_0,x_1,\dots,x_K\}$$
+$$ \mathcal{D}(\tau) \rightarrow \vec{\mathcal{D}}  = \{\mathcal{D}_0,\mathcal{D}_1,\dots,\mathcal{D}_K\}$$
+
+</section> 
+<!--  -->
+<section>
+<p>El problema de control se puede escribir como:</p>
+
+$$
+    \min_{\{f_0 \ , \ f_1 \ , \ \dots \ , \ f_{K-1} \} } \|x_K\|^2 
+ $$
+<p>sujeto a:</p>
+
+$$
+f_t \in \{-1,1\} \ | \ \forall t \in \{0,1,\dots,K-1\}
+$$
+ $$
+ \begin{cases}
+         x_{t+1} = x_t - \Delta t \ \mathcal{D}_t f_t  &amp; \forall t \in \{0,1,\dots,K-1\}  \\
+        x_0 \ dado
+ \end{cases}
+$$
+</section>
+
+
+<section>
+<p>Tomamos como ejemplo \( \mathcal{E}_a = \{1\} \) y \( \mathcal{E}_b = \{1\} \). Esto nos da el siguiente sistema dinámico:</p>
+
+$$
+x_t = \begin{bmatrix} (\alpha_1)_t \  (\beta_1)_t\end{bmatrix}
+$$
+$$
+\begin{cases}
+    (\alpha_1)_{t+1} = (\alpha_1)_{t}-\Delta t\ \mathcal{D}_t^\alpha \ f_t &amp; (\alpha_1)_0 = a_T^1 \\
+    (\beta_1)_{t+1} = (\beta_1)_{t}-\Delta t\ \mathcal{D}_t^\beta \ f_t &amp; (\beta_1)_0 = b_T^1 \\
+\end{cases}
+$$
+
+<p>
+Donde hemos usado una discretización temporal:
+</p>
+
+$$[0,\pi] \rightarrow \{t_0,t_1,\dots,t_{20}\} = \{1\pi/20,2\pi/20,\dots,19\pi/20,\pi \}$$
+
+</section>
+
+<section>
+<p>Evolución del sistema dinámico en tiempo discreto</p>
+<video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/peaks-rev-fewnt.mp4" controls="" width="80%">
+</video>
+</section>
+
+<section>
+<p>Evolución del sistema dinámico en tiempo discreto</p>
+<video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/peaks-rev-alotnt.mp4" controls="" width="80%">
+</video>
+</section>
+
+
+
+</section>
+
+<section>
+
+
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+
+<hr />
+<h4> 4. Conjunto  Controlable</h4>
+<hr />
+
+<section>
+<p>¿Como podemos encontrar todas las posibles trayectorias cuyo final sea el origen de coordenadas?</p>
+<p>Con ayuda de la dirección de evolución \(\mathcal{D}(\tau)\) que en este caso es:</p>
+
+$$
+\mathcal{D}(\tau) = 
+\begin{bmatrix}
+ \mathcal{D}_{\alpha_1}(\tau) \\ \mathcal{D}_{\beta_1}(\tau)
+ \end{bmatrix} = \frac{2}{\pi}
+ \begin{bmatrix}
+ \cos(\tau) \\ \sin(\tau)
+ \end{bmatrix}
+$$
+
+<p>Podemos reconstruir la trayectoria desde el final.</p>
+</section>
+
+<!-- --------------------------------- -->
+
+<section>
+<p>Reconstrucción de todas las posibles trayectorias</p>
+<video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/peaks-allpos.mp4" controls="" width="80%">
+</video>
+</section>
+<!-- --------------------------------- -->
+
+<section>
+<p>Estrategia para obtener la region controlable</p>
+<video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/region-al.mp4" controls="" width="80%">
+</video>
+</section>
+<!-- --------------------------------- -->
+
+<section>
+<p>Estrategia para obtener la region controlable</p>
+<video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/region-al2.mp4" controls="" width="80%">
+</video>
+</section>
+<!-- --------------------------------- -->
+
+<section>
+
+<p>Dado una dirección \(w \in \mathbb{R}^{N_a + N_b}  / \  ||w|| = 1\) entonces podemos aproximar la frontera en la dirección \(w\) como una trayectoria \(x_w\).</p>
+
+$$
+\begin{cases}
+(x_w)_t=  (x_w)_{t-1} + \Delta t \| \mathcal{D}_t.w\| \\
+(x_w)_0 = 0
+\end{cases}
+$$
+<p>Donde \(w\) son puntos de la esfera unidad de dimensión \(\mathbb{R}^{N_a+N_b}\)</p>
+</section>
+
+
+<section>
+<p>Entonces dado un conjunto \(\mathcal{W}\) de trayectorias \((x_w)_t\) se puede construir una función cuyo valor sea 0 cuando estemos en la región controlable</p>
+
+$$
+V_t(x) = \sum_{w_k \in \mathcal{W}} 
+    \sigma [x(\tau) - (x_{w_k})_t]
+$$
+<p>Donde \(\Theta:\mathbb{R} \rightarrow \mathbb{R}\) es una función de activación. Como por ejemplo:</p>
+
+$$
+\sigma(x) = \begin{cases} 
+                1 \ \text{ si } x&gt;0 \\
+                0 \ \text{ si } x&lt;0
+            \end{cases}
+$$
+
+</section>
+
+<section>
+<video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/ValueFzero.mp4" controls="" width="80%">
+</video>
+</section>
+
+
+
+</section>
+<section>
+
+
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+
+<hr />
+<h4> 5. Obtención de soluciones</h4>
+<hr />
+
+<section>
+<p>Suponiendo que conocemos \(V_t(x)\) ¿Cómo podemos encontrar soluciones al problema?</p>
+<p>Siempre que nos mantengamos dentro de la región controlable en todo tiempo acabaremos en el origen y por tanto \(f_t\) será una solución.</p>
+</section>
+
+<!-- --------------------------------- -->
+
+<section>
+<video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/solutions.mp4" controls="" width="80%">
+</video>
+</section>
+
+<section>
+    <p>2 niveles</p>
+    <video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/solndim.mp4" controls="" width="80%"></video>
+</section>
+
+<section>
+    <p>5 niveles</p>
+    <video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/solndim5.mp4" controls="" width="80%"></video>
+</section>
+
+<section>
+    <p>9 niveles</p>
+    <video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/solndim9.mp4" controls="" width="80%"></video>
+</section>
+
+</section>
+<section>
+
+
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+
+<hr />
+<h4> 6. Comportamiento de soluciones óptimas en la región controlable</h4>
+<hr />
+
+
+<section>
+<video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/optsol.mp4" controls="" width="80%">
+</video>
+</section>
+<!-- --------------------------------- -->
+<section>
+<video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/optsol2.mp4" controls="" width="80%">
+</video>
+</section>
+<!-- --------------------------------- -->
+<section>
+<video src="https://djoroya.github.io//SHE-Dynamic-Programming-slides/videos/optsol3.mp4" controls="" width="80%">
+</video>
+</section>
+
+
+</section>
+
+<section>
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+<h4>7. Cambios de número de ángulos</h4>
+<hr />
+
+
+<section>
+
+<img src="https://djoroya.github.io/SHE-Dynamic-Programming-slides/img/1.png" style="width:45%;" />
+<img src="https://djoroya.github.io/SHE-Dynamic-Programming-slides/img/2.png" style="width:45%;" />
+
+</section>
+
+<section>
+
+<img src="https://djoroya.github.io/SHE-Dynamic-Programming-slides/img/3.png" style="width:45%;" />
+<img src="https://djoroya.github.io/SHE-Dynamic-Programming-slides/img/4.png" style="width:45%;" />
+
+</section>
+
+<section>
+<p>\( \mathcal{E}_b = \{ 1 \,\ 7 \,\ 9 \,\ 11 \,\ 13\} \) y \(\mathcal{E}_a = \{ \emptyset\}\)</p>
+
+<img src="https://djoroya.github.io/SHE-Dynamic-Programming-slides/img/5.png" style="width:45%;" />
+<img src="https://djoroya.github.io/SHE-Dynamic-Programming-slides/img/6.png" style="width:45%;" />
+
+</section>
+
+<section>
+<p>\( \mathcal{E}_b = \{ 1 \,\ 7 \,\ 9 \,\ 11 \,\ 13\} \) y \(\mathcal{E}_a = \{ \emptyset\}\)</p>
+<img src="https://djoroya.github.io/SHE-Dynamic-Programming-slides/img/7.png" style="width:45%;" />
+<img src="https://djoroya.github.io/SHE-Dynamic-Programming-slides/img/8.png" style="width:45%;" />
+
+</section>
+
+</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],slideNumber: true,
+								backgroundTransition: 'none'
+
+			});
+		</script>
+	</body>
+</html>

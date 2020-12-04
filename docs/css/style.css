@@ -1,0 +1,26 @@
+.MathJax {
+    font-size: 0.8em !important;;
+    }
+
+.reveal section p {
+    font-size: 0.8em !important;
+    text-align: justify !important;
+}
+
+.reveal section li {
+    font-size: 0.7em !important;
+}
+
+.reveal section pre code {
+    font-size: 0.7em !important;
+}
+
+.reveal h4 {
+    color: salmon !important;
+}
+
+.reveal .slides>section.present,
+.reveal .slides>section>section.present {
+	display: contents !important;
+
+}
