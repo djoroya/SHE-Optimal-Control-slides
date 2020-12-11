@@ -7,7 +7,7 @@ layout: index
     <hr>
     <p> </p>
     <h3>
-        Selective Harmonic Elimination via Feedback Optimal Control
+        Selective Harmonic Elimination via Optimal Control
     </h3>
         <hr>
     <hr>
@@ -15,6 +15,8 @@ layout: index
 </section>
 
 {% include contents/s01.md %}
+{% include contents/s01A.md %}
+
 {% include contents/s02.md %} 
 {% include contents/s03.md %}  
 {% include contents/s04.md %}  

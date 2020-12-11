@@ -10,7 +10,7 @@ function plotRes_2SYM(aharmonics,bharmonics,amatrix,bmatrix,variation,fvalues,yl
     shading interp
     colorbar 
     %colormap(jet(3))
-    xlabel('$f(\tau)$','Interpreter','latex','FontSize',18)
+    xlabel('$u(\tau)$','Interpreter','latex','FontSize',18)
     ylabel(ylabelstring,'Interpreter','latex','FontSize',18)    
     title(tstring)
     

@@ -1,43 +1,4 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-		<title>reveal.js</title>
-
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="css/style.css">
-
-		<link rel="stylesheet" href="dist/theme/blood.css" id="theme">
-
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
-
-		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-		<script id="MathJax-script" async
-				src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-				
-		</script>
-		  <script type="text/x-mathjax-config">
-			MathJax.Hub.Config({
-			tex2jax: {
-			  inlineMath: [['$','$'], ['\\(','\\)']],
-			  processEscapes: true
-			})
-		</script>
-
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
+I"6<section>
     <hr />
     <hr />
     <p> </p>
@@ -144,10 +105,12 @@ b_j = \frac{2}{\pi} \int_0^\pi u(\tau)  \sin(j \tau) d\tau \ | \ \forall j \ odd
 $$
 </section>
 <!-- --------------------- -->
-
 <section>
-<p>If we consider two sets of odd numbers \( \mathcal{E}_a \) and \( \mathcal{E}_b\) with cardinalities \(|\mathcal{E}_a| = N_a \) y  \(|\mathcal{E}_b| = N_b\); and we consider a two target vectors: \({a}_T  \in \mathbb{R}^{N_a}\) y \({b}_T  \in \mathbb{R}^{N_b}\)</p>
-<p> We look for a function \(\{f (\tau) \in \mathcal{U} \ | \ \forall \tau \in [0,\pi)\}\) whose Fourier coefficients satisfy:</p>
+
+
+<p>We consider two sets of odd numbers \( \mathcal{E}_a \) and \( \mathcal{E}_b\) with cardinalities \(|\mathcal{E}_a| = N_a \) y  \(|\mathcal{E}_b| = N_b\)</p>
+<p>Also, we consider a two target vectors: \({a}_T  \in \mathbb{R}^{N_a}\) y \({b}_T  \in \mathbb{R}^{N_b}\)</p>
+<p> We look for a function \(f (\tau) \) whose Fourier coefficients satisfy:</p>
 
 $$
 a_i = ({a}_T)_i \ | \  \forall i \in \mathcal{E}_a 
@@ -648,26 +611,4 @@ $$
 </section>
 
 </section>
-
-			</div>
-		</div>
-
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],slideNumber: true,
-								backgroundTransition: 'none'
-
-			});
-		</script>
-	</body>
-</html>
+:ET

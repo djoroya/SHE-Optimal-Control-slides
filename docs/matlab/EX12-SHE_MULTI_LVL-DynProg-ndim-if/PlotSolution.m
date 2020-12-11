@@ -21,7 +21,7 @@ refine_tspan = linspace(0,T,3*Nt);
 refine_f_time = interp1(tspan(1:end-1),f_time,refine_tspan,'nearest','extrap');
 
 plot(refine_tspan,refine_f_time)
-ylabel('$f(\tau)$','Interpreter','latex')
+ylabel('$u(\tau)$','Interpreter','latex')
 xlabel('$t$','Interpreter','latex')
 ylim([-1.5 1.5])
 yline(0)

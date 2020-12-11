@@ -43,7 +43,7 @@ jplot =plot(tspan(1),ft(1),'Marker','.','MarkerSize',18);
 
 title("Control")
 xlabel("\tau",'FontSize',21)
-ylabel("$f(\tau)$",'Interpreter','latex','FontSize',21)
+ylabel("$u(\tau)$",'Interpreter','latex','FontSize',21)
 ylim([-1.5 1.5])
 xlim([0 pi])
 

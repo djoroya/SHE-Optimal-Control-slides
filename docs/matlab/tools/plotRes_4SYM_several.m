@@ -9,7 +9,7 @@ function plotRes_4SYM(bharmonics,bmatrix,variation,fvalues,ylabelstring,tstring)
     shading interp
     colorbar 
     %colormap(jet(3))
-    xlabel('$f(\tau)$','Interpreter','latex','FontSize',18)
+    xlabel('$u(\tau)$','Interpreter','latex','FontSize',18)
     ylabel(ylabelstring,'Interpreter','latex','FontSize',18)    
     title(tstring)
     xlim([0 pi/2])
