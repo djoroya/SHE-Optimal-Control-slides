@@ -8,13 +8,13 @@ layout: index
     <p> </p>
     <h3>
         Selective Harmonic Elimination via Optimal Control
-    </h3>
+    </h3> 
         <hr>
     <hr>
     <h4>Jesús Oroya - Dic 2020</h4>
-</section>
+</section>  
 
-{% include contents/s01.md %}
+{% include contents/s01.md %} 
 {% include contents/s01A.md %}
 
 {% include contents/s02.md %} 

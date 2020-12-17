@@ -1,14 +1,17 @@
-.MathJax {
-    font-size: 0.8em !important;;
-    }
 
+.MathJax p {
+    font-size: 0.6em !important;
+    color: rgb(134, 134, 134) !important;
+    }
+    
 .reveal section p {
-    font-size: 0.8em !important;
+    font-size: 0.675em !important;
     text-align: justify !important;
 }
 
 .reveal section li {
     font-size: 0.7em !important;
+    text-align: justify !important;
 }
 
 .reveal section pre code {
@@ -16,11 +19,15 @@
 }
 
 .reveal h4 {
-    color: salmon !important;
+    color: rgb(255, 116, 116) !important;
 }
 
 .reveal .slides>section.present,
 .reveal .slides>section>section.present {
 	display: contents !important;
 
+}
+
+b {
+    color: rgb(163, 170, 255) !important
 }
