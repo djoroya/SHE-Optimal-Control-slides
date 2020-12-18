@@ -130,18 +130,16 @@ $$
         <p>Entonces \(u(\tau)\) queda determinado por las localizaciones de cambio (<b>ángulos de conmutación</b>) y por la secuencia de valores que toma (<b>forma de onda</b>).</p>
     </section>
     <section>
-        <ul>
-        <li>Matemáticamente, una forma de onda es una secuencia \(\mathcal{S}\) de valores del conjunto \(\mathcal{U}\) cuyos valores pueden repetir. 
-        </li>
-        <li>Por ejemplo, en el caso de \(\mathcal{U} = \{-1,+1\}\) (caso binivel) podríamos elegir la forma de onda: \(\mathcal{S} = \{-1,+1,-1,+1\}\).
-        </li>
-        <li> Los ángulos de conmutación es un vector de 
+        <p>Matemáticamente, una forma de onda es una secuencia \(\mathcal{S}\) de valores del conjunto \(\mathcal{U}\) cuyos valores pueden repetir. 
+        </p>
+        <p>Por ejemplo, en el caso de \(\mathcal{U} = \{-1,+1\}\) (caso binivel) podríamos elegir la forma de onda: \(\mathcal{S} = \{-1,+1,-1,+1\}\).
+        </p>
+        <p> Los ángulos de conmutación es un vector de 
         $$
         \vec{\phi} = \{\phi_1,\phi_2,\dots,\phi_M\}\in [0,\pi)^M
         $$ 
         donde \(M\) es el número de cambios de la función \(u(\tau)\).
-        </li>
-        </ul>
+        </p>
     </section>
     <section>
         <p>
@@ -448,9 +446,9 @@ Donde considaremos \(\tau\) fijo.
 </p>
 </section>
 <section>
-<p>Si llamamos \(N_u\) a la cardinalidad del conjunto \(\mathcal{U}\), podemos proponer el siguiente término de penalización:
+<p>Si llamamos \(N_u\) a la cardinalidad del conjunto \(\mathcal{U} = \{u_1,u_2,\dots,u_{N_u}\}\), podemos proponer el siguiente término de penalización:
 $$ \mathcal{L}(u) = \prod_{k=1}^{N_u - 1} \chi_{(u_k,u_{k+1})} recta(u_k,u_{k+1})$$
-Este termino es una aproximación afin de una parábola, cuyos vertices los elementos de \(\mathcal{U}\)</p>
+Este termino es una aproximación afin de una parábola, cuyos vertices son los elementos de \(\mathcal{U}\)</p>
 
 </section>
 <section>
@@ -465,218 +463,19 @@ Este termino es una aproximación afin de una parábola, cuyos vertices los elem
 </section>
 
 <section>
-<p>En el caso \(\mathcal{U} = \{-1.0,-0.5,0.0,0.5,1.0\}\)</p>
-<img width="70%" src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/11.png" />
-</section>
-
-</section>
-
-<section>
-
-
-
-<section>
-<p style="padding-top:200px"></p>
-</section>
-
-
-<hr />
-<h4> 4. Conjunto  Controlable</h4>
-<hr />
-
-<section>
-<p>¿Como podemos encontrar todas las posibles trayectorias cuyo final sea el origen de coordenadas?</p>
-<p>Con ayuda de la dirección de evolución \(\mathcal{D}(\tau)\) que en este caso es:</p>
-
-$$
-\mathcal{D}(\tau) = 
-\begin{bmatrix}
- \mathcal{D}_{\alpha_1}(\tau) \\ \mathcal{D}_{\beta_1}(\tau)
- \end{bmatrix} = \frac{2}{\pi}
- \begin{bmatrix}
- \cos(\tau) \\ \sin(\tau)
- \end{bmatrix}
-$$
-
-<p>Podemos reconstruir la trayectoria desde el final.</p>
-</section>
-
-<!-- --------------------------------- -->
-
-<section>
-<p>Reconstrucción de todas las posibles trayectorias</p>
-<video src="https://djoroya.github.io//SHE-Optimal-Control-slides/videos/peaks-allpos.mp4" controls="" width="80%">
-</video>
-</section>
-<!-- --------------------------------- -->
-
-<section>
-<p>Estrategia para obtener la region controlable</p>
-<video src="https://djoroya.github.io//SHE-Optimal-Control-slides/videos/region-al.mp4" controls="" width="80%">
-</video>
-</section>
-<!-- --------------------------------- -->
-
-<section>
-<p>Estrategia para obtener la region controlable</p>
-<video src="https://djoroya.github.io//SHE-Optimal-Control-slides/videos/region-al2.mp4" controls="" width="80%">
-</video>
-</section>
-<!-- --------------------------------- -->
-
-<section>
-
-<p>Dado una dirección \(w \in \mathbb{R}^{N_a + N_b}  / \  ||w|| = 1\) entonces podemos aproximar la frontera en la dirección \(w\) como una trayectoria \(x_w\).</p>
-
-$$
-\begin{cases}
-(x_w)_t=  (x_w)_{t-1} + \Delta t \| \mathcal{D}_t.w\| \\
-(x_w)_0 = 0
-\end{cases}
-$$
-<p>Donde \(w\) son puntos de la esfera unidad de dimensión \(\mathbb{R}^{N_a+N_b}\)</p>
-</section>
-
-
-<section>
-<p>Entonces dado un conjunto \(\mathcal{W}\) de trayectorias \((x_w)_t\) se puede construir una función cuyo valor sea 0 cuando estemos en la región controlable</p>
-
-$$
-V_t(x) = \sum_{w_k \in \mathcal{W}} 
-    \sigma [x(\tau) - (x_{w_k})_t]
-$$
-<p>Donde \(\Theta:\mathbb{R} \rightarrow \mathbb{R}\) es una función de activación. Como por ejemplo:</p>
-
-$$
-\sigma(x) = \begin{cases} 
-                1 \ \text{ si } x&gt;0 \\
-                0 \ \text{ si } x&lt;0
-            \end{cases}
-$$
-
-</section>
-
-<section>
-<video src="https://djoroya.github.io//SHE-Optimal-Control-slides/videos/ValueFzero.mp4" controls="" width="80%">
-</video>
-</section>
-
-
-
+<p>Ejemplo:</p>
+<ul>
+    <li>\(\mathcal{E}_a = \{\emptyset \}\) y \(\mathcal{E}_b = \{1,3,7,13,15 \}\)</li>
+    <li>\(\mathcal{U} = \{-1,-1/2,\ 0 \ ,+1/2,+1\}\)</li>
+    <li>\(b_T = [m,0,0,0,0] \ \forall m \in [-0.8,0.8]\) </li>
+</ul>
 </section>
 <section>
-
-
-
-<section>
-<p style="padding-top:200px"></p>
+<p>Ejemplo:</p>
+<img width="60%" src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/11.png" />
+</section>
 </section>
 
-
-<hr />
-<h4> 5. Obtención de soluciones</h4>
-<hr />
-
-<section>
-<p>Suponiendo que conocemos \(V_t(x)\) ¿Cómo podemos encontrar soluciones al problema?</p>
-<p>Siempre que nos mantengamos dentro de la región controlable en todo tiempo acabaremos en el origen y por tanto \(f_t\) será una solución.</p>
-</section>
-
-<!-- --------------------------------- -->
-
-<section>
-<video src="https://djoroya.github.io//SHE-Optimal-Control-slides/videos/solutions.mp4" controls="" width="80%">
-</video>
-</section>
-
-<section>
-    <p>2 niveles</p>
-    <video src="https://djoroya.github.io//SHE-Optimal-Control-slides/videos/solndim.mp4" controls="" width="80%"></video>
-</section>
-
-<section>
-    <p>5 niveles</p>
-    <video src="https://djoroya.github.io//SHE-Optimal-Control-slides/videos/solndim5.mp4" controls="" width="80%"></video>
-</section>
-
-<section>
-    <p>9 niveles</p>
-    <video src="https://djoroya.github.io//SHE-Optimal-Control-slides/videos/solndim9.mp4" controls="" width="80%"></video>
-</section>
-
-</section>
-<section>
-
-
-
-<section>
-<p style="padding-top:200px"></p>
-</section>
-
-
-<hr />
-<h4> 6. Comportamiento de soluciones óptimas en la región controlable</h4>
-<hr />
-
-
-<section>
-<video src="https://djoroya.github.io//SHE-Optimal-Control-slides/videos/optsol.mp4" controls="" width="80%">
-</video>
-</section>
-<!-- --------------------------------- -->
-<section>
-<video src="https://djoroya.github.io//SHE-Optimal-Control-slides/videos/optsol2.mp4" controls="" width="80%">
-</video>
-</section>
-<!-- --------------------------------- -->
-<section>
-<video src="https://djoroya.github.io//SHE-Optimal-Control-slides/videos/optsol3.mp4" controls="" width="80%">
-</video>
-</section>
-
-
-</section>
-
-<section>
-
-<section>
-<p style="padding-top:200px"></p>
-</section>
-
-<h4>7. Cambios de número de ángulos</h4>
-<hr />
-
-
-<section>
-
-<img src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/1.png" style="width:45%;" />
-<img src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/2.png" style="width:45%;" />
-
-</section>
-
-<section>
-
-<img src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/3.png" style="width:45%;" />
-<img src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/4.png" style="width:45%;" />
-
-</section>
-
-<section>
-<p>\( \mathcal{E}_b = \{ 1 \,\ 7 \,\ 9 \,\ 11 \,\ 13\} \) y \(\mathcal{E}_a = \{ \emptyset\}\)</p>
-
-<img src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/5.png" style="width:45%;" />
-<img src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/6.png" style="width:45%;" />
-
-</section>
-
-<section>
-<p>\( \mathcal{E}_b = \{ 1 \,\ 7 \,\ 9 \,\ 11 \,\ 13\} \) y \(\mathcal{E}_a = \{ \emptyset\}\)</p>
-<img src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/7.png" style="width:45%;" />
-<img src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/8.png" style="width:45%;" />
-
-</section>
-
-</section>
 
 			</div>
 		</div>

@@ -19,7 +19,3 @@ layout: index
 
 {% include contents/s02.md %} 
 {% include contents/s03.md %}  
-{% include contents/s04.md %}  
-{% include contents/s05.md %}  
-{% include contents/s06.md %}  
-{% include contents/s07.md %}  
