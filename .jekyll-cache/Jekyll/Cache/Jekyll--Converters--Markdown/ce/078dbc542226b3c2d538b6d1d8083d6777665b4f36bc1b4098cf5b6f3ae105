@@ -1,14 +1,29 @@
-I"�5<section>
+I"E:<section>
     <hr />
     <hr />
     <p> </p>
     <h3>
         Selective Harmonic Elimination via Optimal Control
     </h3> 
-        <hr />
     <hr />
-    <h4>Jesús Oroya - Dic 2020</h4>
+    <h4 style="font-family: 'Cookie', cursive;">Jesús Oroya</h4>
+    <h6><a>https://djoroya.github.io</a></h6>
+    <h5>December 2020</h5>
+        <img style="padding-bottom: 10px" width="30%" src="https://cmc.deusto.eus/wp-content/uploads/2020/01/logo-ccm-400x100-1.png" />
+        <img width="30%" src="https://beclever.solutions/wp-content/uploads/2018/07/deusto-logo.png" />
+    <hr />
+
+
 </section>
+
+<div class="footer">
+<table>
+    <th style="width:33.33%">December 2020</th>
+    <th style="width:33.33%">Jesús Oroya</th>
+    <th style="width:33.33%">University of Deusto</th>
+</table>
+
+</div>
 
 <section>
     
@@ -22,15 +37,20 @@
 <h4> 1. Problem Definition</h4>
 <hr />
     <section>
-        <p>We need define a finite subset \(\mathcal{U}\) of the interval \([-1,1]\).
+        <p>First, we need define a finite subset \(\mathcal{U}\) of the interval \([-1,1]\).
         </p>
-        <p> We search a step function:
-            $$ \{ u(\tau) \in \mathcal{U}\ | \ \tau \in [0,2\pi]\} $$
-            With half-wave symmetry \( u(\tau) = -u(\tau+\pi) \) and a concrete harmonic composition.
+        <p> So, We search a step function:
+            $$ \{ u(\tau) \in \mathcal{U}\ | \ \tau \in [0,2\pi)\} $$
+            with half-wave symmetry 
+            $$ u(\tau) = -u(\tau+\pi) \ | \ \forall \tau \in (0,\pi]$$
+            with a concrete harmonic composition.
         </p>
     </section>
-    <!-- --------------------- -->
+    <!-- --------------------------------------------------- -->
     <section>
+        <p>
+        De manera que la función \(u(\tau)\) que determinada por sus valores en \(\tau \in [0,\pi)\)
+        </p>
         <p>So, the Fourier coefficients of function \(u(\tau)\) can be written as:
         $$ 
         a_i = \frac{2}{\pi} \int_0^\pi u(\tau) \cos(i \tau)d\tau \ | \ \forall i \ odd 
@@ -89,11 +109,11 @@ $$
         <p>Entonces \(u(\tau)\) queda determinado por las localizaciones de cambio (<b>ángulos de conmutación</b>) y por la secuencia de valores que toma (<b>forma de onda</b>).</p>
     </section>
     <section>
-        <p>Matemáticamente, una forma de onda es una secuencia \(\mathcal{S}\) de valores del conjunto \(\mathcal{U}\) cuyos valores pueden repetir. 
+        <p>Una <b>forma de onda</b> es una secuencia \(\mathcal{S} = \{s_1,s_2,\dots,\}\).</p>
+        <p> Estos valores pertenecen conjunto \(\mathcal{U}\) y además se pueden repetir. </p>
+        <p>Por ejemplo, en el caso de \(\mathcal{U} = \{-1,+1\}\) (<b>caso binivel</b>) podríamos elegir la forma de onda: \(\mathcal{S} = \{-1,+1,-1,+1\}\).
         </p>
-        <p>Por ejemplo, en el caso de \(\mathcal{U} = \{-1,+1\}\) (caso binivel) podríamos elegir la forma de onda: \(\mathcal{S} = \{-1,+1,-1,+1\}\).
-        </p>
-        <p> Los ángulos de conmutación es un vector de 
+        <p> Los <b>ángulos de conmutación</b> es un vector
         $$
         \vec{\phi} = \{\phi_1,\phi_2,\dots,\phi_M\}\in [0,\pi)^M
         $$ 
@@ -101,19 +121,8 @@ $$
         </p>
     </section>
     <section>
-        <p>
-        Remplazando la forma de onda \(\mathcal{S}\) y los ángulos de conmutación \(\vec{\phi}\) en las expresiones de los coeficientes de Fourier:
-        $$ 
-        a_i = \frac{2}{\pi} \int_0^\pi u(\tau) \cos(i \tau)d\tau \ | \ \forall i \ odd 
-        $$
-        $$
-        b_j = \frac{2}{\pi} \int_0^\pi u(\tau)  \sin(j \tau) d\tau \ | \ \forall j \ odd 
-        $$
-        </p>
-    </section>
-    <section>
     <p>
-    Remplazando la forma de onda \(\mathcal{S}\) y los ángulos de conmutación \(\phi\) en las expresiones de los coeficientes de Fourier:
+    Remplazando la <b>forma de onda</b> \(\mathcal{S}\) y los <b>ángulos de conmutación</b> \(\vec{\phi}\) en las expresiones de los <b>coeficientes de Fourier</b> obtenemos:
     $$    a_i(\vec{\phi}) = +\frac{2}{i\pi}  \sum_{k=1}^{M+1} s_k \Big[ \sin(i\phi_k) -\sin(i\phi_{k-1})\Big] $$
     $$
     b_j(\vec{\phi}) = -\frac{2}{j\pi}  \sum_{k=1}^{M+1} s_k \Big[ \cos(j\phi_k) -\cos(j\phi_{k-1})\Big]$$
@@ -121,7 +130,7 @@ $$
     </section>
     <section>
     <p>
-    De manera fijado la forma de onda \(\mathcal{S}\) podemos buscar los ángulos de conmutación mediante el siguiente problema de minimización:
+    De manera fijado la <b>forma de onda</b> \(\mathcal{S}\) podemos buscar los ángulos de conmutación mediante el siguiente problema de minimización:
     $$
     \min_{\vec{\phi} \in [0,\pi]^{M} }  \Bigg[
     \sum_{i \in \mathcal{E}_a} \| a_T^i - a_i({\phi}) \|^2 +
@@ -147,7 +156,7 @@ $$
 
 
 <hr />
-<h4> 3. SHE como un sistema dinámico</h4>
+<h4> 3. SHE as Dynamical System</h4>
 <hr />
 
 <section>
@@ -202,53 +211,34 @@ $$
 
  <section>
  
-<p> Cambio de variable \(\alpha'(\tau) = a_T - \alpha(\tau)\) y  \(\beta'(\tau) = b_T - \beta(\tau)\)
+<p> Realizamos el cambio de variable \(\alpha'(\tau) = a_T - \alpha(\tau)\) y  \(\beta'(\tau) = b_T - \beta(\tau)\)
 $$ 
 \begin{cases} 
-    \dot{\alpha_i'}(\tau) &amp; = -\frac{2}{\pi}f(\tau)\cos(i\tau) \\  
-    \alpha_i'(0) &amp; = \textcolor{red}{a_T^i}      
+    \dot{\alpha_i'}(\tau) &amp; = -\frac{2}{\pi}u(\tau)\cos(i\tau) \\  
+    \alpha_i'(0) &amp; = \textcolor{orange}{a_T^i}      
 \end{cases}
 $$
 
 $$
 
 \begin{cases} 
-    \dot{\beta_j'}(\tau) &amp; = -\frac{2}{\pi}f(\tau)\sin(j\tau) \\  
-    \beta_j'(0) &amp; = \textcolor{red}{b_T^i}        
+    \dot{\beta_j'}(\tau) &amp; = -\frac{2}{\pi}u(\tau)\sin(j\tau) \\  
+    \beta_j'(0) &amp; = \textcolor{orange}{b_T^i}        
 \end{cases}
 $$
 </p>
 
 
-<p>Si el sistema termina en \(\alpha_i'(\pi) = 0\) y \(\beta_j'(\pi) = 0\) entonces las condiciones iniciales \(\textcolor{red}{a_T^i}\) y \(\textcolor{red}{b_T^j}\) son los coefientes de Fourier de \(f(\tau)\)
+<p>Si el sistema termina en \(\alpha_i'(\pi) = 0\) y \(\beta_j'(\pi) = 0\) entonces las condiciones iniciales \(\textcolor{orange}{a_T^i}\) y \(\textcolor{orange}{b_T^j}\) son los coefientes de Fourier de \(u(\tau)\)
 </p>
 </section> 
 
-
-
-</section>
-
-<!--  -->
-
-<section>
-
-
-
-<section>
-<p style="padding-top:200px"></p>
-</section>
-
-
-<hr />
-<h4> 4. Problema de control óptimo</h4>
-<hr />
-
 <section>
     <p>
-    El problema de control se puede escribir como:
-    $$ \min_{u(\tau) \in \mathcal{U}} \Big(\|{\alpha}(\pi)\|^2 + \|  {\beta}(\pi)\|^2 \Big) $$
+    Abusando de la notación cambiaremos las variables \(\alpha_i' \rightarrow \alpha_i\) y \(\beta_j' \rightarrow \beta_j\).
     </p>
-    <p>sujeto a:
+    <p>
+    De manera que el sistema dinámico asociado a el problema SHE es:
     $$
         \forall i \in \mathcal{E}_a\ \ 
         \begin{cases}
@@ -263,6 +253,7 @@ $$
             \beta_j(0) =  b_T^i
         \end{cases} \\
     $$
+    A continuación tomaremos una notación con el fin de escribir el sistema dinámico de manera más compacta.
     </p>
 </section>
 
@@ -277,7 +268,7 @@ $$
     $$
     </p>
     <p> 
-    Entonces podemos construir los vectores \(\mathcal{D}^\alpha\) y \(\mathcal{D}^\beta\) como:
+    Entonces podemos construir los vectores \(\mathcal{D}^\alpha \in \mathbb{R}^{N_a}\) y \(\mathcal{D}^\beta \in \mathbb{R}^{N_b}\) como:
     $$
     \mathcal{D}^\alpha(\tau) = 
     [\mathcal{D}^\alpha_1(\tau),\mathcal{D}^\alpha_3(\tau),\mathcal{D}^\alpha_5(\tau), \dots ]
@@ -290,13 +281,8 @@ $$
 <!--  -->
 
 <section>
-    <p>El problema de control se puede escribir como:
-    $$
-    \min_{u(\tau) \in \mathcal{U}} \Big(\|{\alpha}(\pi)\|^2 + \|  {\beta}(\pi)\|^2 \Big)
-    $$
-    </p>
     <p>
-    sujeto a:
+    Entonces el sistema dinámico se puede escribir como:
     $$
     \begin{cases}
             \dot{\alpha}(\tau) = -\mathcal{D}_\alpha(\tau) u(\tau) &amp; \tau \in [0,\pi]\\
@@ -322,6 +308,39 @@ $$
     $$ x_0 = [a_T \ \ b_T] $$
     </p>
 </section>
+<section>
+    <p>
+    El sistemá dinámico se puede escribir como:
+    $$
+    \begin{cases}
+            \dot{x}(\tau) = -\mathcal{D}(\tau) u(\tau) &amp; \tau \in [0,\pi]\\
+            x(0) = \boldsymbol{x}_0
+    \end{cases}
+    $$
+    Donde:
+    $$ \mathcal{D}(\tau) = [\mathcal{D}_\alpha(\tau) \ \mathcal{D}_\beta(\tau) ]$$
+    $$ x(\tau) = [\alpha(\tau) \ \beta(\tau)] $$
+    </p>
+</section>
+
+</section>
+
+<!--  -->
+
+<section>
+
+
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+
+<hr />
+<h4> 4. Optimal Control</h4>
+<hr />
+
+
 <!--  -->
 <section>
     <p>
@@ -336,18 +355,33 @@ $$
     \end{cases}
     $$
     </p>
-    <p style="color:red">¡Donde el control debe tomar valores en el conjunto finito \(\mathcal{U}\)!</p>
+    <p><b>¡Donde el control debe tomar valores en el conjunto finito \(\mathcal{U}\)!</b></p>
 </section>
+</section>
+
+<section>
+
+
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+
+<hr />
+<h4> 5. Regularized Optimal Control</h4>
+<hr />
+
 <!--  -->
 <section>
-<p>Es conocido que un problema de control sin término de penalización tiene muchas soluciones y que se puede buscar un control concreto añadiendo este término.</p>
+<p>Es conocido que un problema de control <b>sin término de penalización</b> tiene <b>muchas soluciones</b></p>
+<p> Se puede buscar un control concreto añadiendo este término.</p>
 <p>Por esta razón en este caso añadiremos un término de penalización tal que en el limite en el que el término desaparece el control obtenido es el que tiene las carácteristicas buscadas</p>
-
 </section>
 <section>
 <p>
     Entonces el problema de control que consideraremos es:
-    $$ \min_{u(\tau) \in \textcolor{red}{[-1,1]}} \|x(\pi)\|^2 + \textcolor{red}{\epsilon} \int_0^T \textcolor{red}{\mathcal{L}(u(\tau))}dt $$
+    $$ \min_{u(\tau) \in \textcolor{orange}{[-1,1]}} \|x(\pi)\|^2 + \textcolor{orange}{\epsilon} \int_0^T \textcolor{orange}{\mathcal{L}(u(\tau))}dt $$
     </p>
     <p>sujeto a:
     $$
@@ -406,7 +440,7 @@ Donde considaremos \(\tau\) fijo.
 </section>
 <section>
 <p>Si llamamos \(N_u\) a la cardinalidad del conjunto \(\mathcal{U} = \{u_1,u_2,\dots,u_{N_u}\}\), podemos proponer el siguiente término de penalización:
-$$ \mathcal{L}(u) = \prod_{k=1}^{N_u - 1} \chi_{(u_k,u_{k+1})} recta(u_k,u_{k+1})$$
+$$ \mathcal{L}(u) = \sum_{k=1}^{N_u - 1} \mathbb{1}_{(u_k,u_{k+1})} recta(u_k,u_{k+1})$$
 Este termino es una aproximación afin de una parábola, cuyos vertices son los elementos de \(\mathcal{U}\)</p>
 
 </section>
@@ -414,13 +448,28 @@ Este termino es una aproximación afin de una parábola, cuyos vertices son los 
 <p>En el caso \(\mathcal{U} = \{-1.0,-0.5,0.0,0.5,1.0\}\)</p>
 <img width="60%" src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/10.png" />
 </section>
-
-
+<!--  -->
 <section>
 <p>En el caso \(\mathcal{U} = \{-1.0,-0.5,0.0,0.5,1.0\}\)</p>
 <img width="60%" src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/9.png" />
 </section>
+</section>
 
+<section>
+
+
+
+<section>
+<p style="padding-top:200px"></p>
+</section>
+
+
+<hr />
+<h4> 6. Numerical Implementation</h4>
+<hr />
+
+
+<!--  -->
 <section>
 <p>Ejemplo:</p>
 <ul>
@@ -429,6 +478,7 @@ Este termino es una aproximación afin de una parábola, cuyos vertices son los 
     <li>\(b_T = [m,0,0,0,0] \ \forall m \in [-0.8,0.8]\) </li>
 </ul>
 </section>
+<!--  -->
 <section>
 <p>Ejemplo:</p>
 <img width="60%" src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/11.png" />
