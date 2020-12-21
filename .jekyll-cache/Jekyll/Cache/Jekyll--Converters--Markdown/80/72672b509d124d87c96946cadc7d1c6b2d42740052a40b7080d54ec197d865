@@ -1,4 +1,4 @@
-I"E:<section>
+I"?<section>
     <hr />
     <hr />
     <p> </p>
@@ -371,88 +371,140 @@ $$
 <hr />
 <h4> 5. Regularized Optimal Control</h4>
 <hr />
-
+<!--  -->
 <!--  -->
 <section>
-<p>Es conocido que un problema de control <b>sin término de penalización</b> tiene <b>muchas soluciones</b></p>
-<p> Se puede buscar un control concreto añadiendo este término.</p>
-<p>Por esta razón en este caso añadiremos un término de penalización tal que en el limite en el que el término desaparece el control obtenido es el que tiene las carácteristicas buscadas</p>
-</section>
-<section>
-<p>
-    Entonces el problema de control que consideraremos es:
-    $$ \min_{u(\tau) \in \textcolor{orange}{[-1,1]}} \|x(\pi)\|^2 + \textcolor{orange}{\epsilon} \int_0^T \textcolor{orange}{\mathcal{L}(u(\tau))}dt $$
+    <p>
+        Es conocido que un problema de control <b>sin término de penalización</b> tiene <b>muchas soluciones</b>
     </p>
-    <p>sujeto a:
-    $$
-    \begin{cases}
-            \dot{x}(\tau) = -\mathcal{D}(\tau) u(\tau) &amp; \tau \in [0,\pi]\\
-            x(0) = x_0
-    \end{cases}
-    $$
-    Entonces cuando \(\epsilon \rightarrow 0 \) el problema planteado controlará el sistema. Pero debemos buscar condiciones para \(\mathcal{L}\) para que esto suceda.
+    <p>
+        Se puede buscar un control concreto añadiendo este término.
+    </p>
+    <p>
+        Por esta razón en este caso añadiremos un término de penalización tal que en el limite en el que el término desaparece el control obtenido es el que tiene las carácteristicas buscadas.
+    </p>
+</section>
+<!--  -->
+<!--  -->
+<section>
+<p>Entonces el problema de control que consideraremos es: 
+
+$$ \min_{u(\tau) \in \textcolor{orange}{[-1,1]}} \|x(\pi)\|^2 + \textcolor{orange}{\epsilon} \int_0^T \textcolor{orange}{\mathcal{L}(u(\tau))}dt $$
+
+</p>
+<p>sujeto a:
+
+$$
+\begin{cases}
+        \dot{x}(\tau) = -\mathcal{D}(\tau) u(\tau) &amp; \tau \in [0,\pi]\\
+        x(0) = x_0
+\end{cases}
+$$
+
+Entonces cuando \(\epsilon \rightarrow 0 \) el problema planteado controlará el sistema. Pero debemos buscar condiciones para \(\mathcal{L}\) para que esto suceda.
 </p>
 </section>
+<!--  -->
+<!--  -->
 <section>
-    <p>En este caso las condiciones de optimalidad de primer orden, vienen dadas por el principio de mínimo de Pontryagin. Para ello es necesario definir el Hamiltoniano del problema, en este caso:
-    $$
-    H(u,p,\tau) = [p^T \cdot \mathcal{D}(\tau)] u + \epsilon\mathcal{L}(u)
-    $$
-    </p>
-    <p>donde \(p\) es el estado adjunto. Este se puede obtener como: 
-    $$
-    \begin{cases}
+<p>En este caso las condiciones de optimalidad de primer orden, vienen dadas por el principio de mínimo de Pontryagin. Para ello es necesario definir el Hamiltoniano del problema, en este caso:
+
+$$
+    H(u,p,\tau) = [p^T \cdot \mathcal{D}(\tau)] u + \epsilon\textcolor{orange}{\mathcal{L}(u)}
+$$
+</p>
+<p>donde \(p\) es el estado adjunto. Este se puede obtener como: 
+   $$
+     \begin{cases}
         \dot{p}(\tau) = -\nabla_x H(u,p,\tau) \\
         \dot{p}(\pi)  = -2 x(\pi)
     \end{cases} \rightarrow
     p(\tau) = -2 x(\pi) \ \  \forall \tau \in [0,\pi)
-    $$
-    El estado adjunto \(p(\tau)\) es constante en el tiempo.
-    </p>
+$$
+El estado adjunto \(p(\tau)\) es constante en el tiempo.
+</p>
 </section>
+<!--  -->
+<!--  -->
 <section>
-    <p>Debemos notar que \([p^T \cdot \mathcal{D}(\tau)] \) es un escalar compuesta por una combinación lineal de senos y cosenos. Concretamente:
-    $$ [p^T \cdot \mathcal{D}(\tau)]  = \sum_{i \in \mathcal{E}_a} p_{\alpha}\cos(j\tau) +  \sum_{i \in \mathcal{E}_a} p_{\beta}\sin(j\tau) $$
-    $$ \forall \tau \in [0,\pi]$$
-    </p>
-    <p>De manera que podemos notar que \([p^T \cdot \mathcal{D}(\tau)] \)  es un escalar que puede tomar valores negativos y positivos.</p>
+<p>Debemos notar que \([p^T \cdot \mathcal{D}(\tau)] \) es un escalar compuesta por una combinación lineal de senos y cosenos. Concretamente:
+    
+$$ [p^T \cdot \mathcal{D}(\tau)]  = \sum_{i \in \mathcal{E}_a} p_{\alpha}\cos(j\tau) +  \sum_{i \in \mathcal{E}_a} p_{\beta}\sin(j\tau) $$
+$$ \forall \tau \in [0,\pi]$$
+</p>
+<p>De manera que podemos notar que \([p^T \cdot \mathcal{D}(\tau)] \)  es un escalar que puede tomar valores negativos y positivos.</p>
 </section>
+<!--  -->
+<!--  -->
 <section>
-    <p>
-    Por otra parte, la forma del control óptimo \(u^*(\tau)\) viene dada por la siguiente condición 
-    $$
-    u^*(\tau) = \min_{u \in [-1,+1]} H(u,p^*,\tau)
-    $$
-    Remplazando el Hamiltoniano en la expresión anterior:
-    $$
-    u^*(\tau) = \min_{u \in [-1,+1]} \big[ [p^* \cdot \mathcal{D}(\tau)] u + \epsilon\mathcal{L}(u) \big]
-    $$
-    Donde remplazaremos  \([p^* \cdot \mathcal{D}(\tau)] \) por la letra \(m \in \mathbb{R}\) 
-    </p>
+<p>
+Por otra parte, la forma del control óptimo \(u^*(\tau)\) viene dada por la siguiente condición 
+
+$$
+u^*(\tau) = \min_{u \in [-1,+1]} H(u,p^*,\tau)
+$$
+
+Remplazando el Hamiltoniano en la expresión anterior:
+
+$$
+u^*(\tau) = \min_{u \in [-1,+1]} \big[ [p^* \cdot \mathcal{D}(\tau)] u + \epsilon\textcolor{orange}{\mathcal{L}(u)} \big]
+$$
+
+Donde remplazaremos  \([p^* \cdot \mathcal{D}(\tau)] \) por la letra \(m \in \mathbb{R}\) 
+</p>
 </section>
+<!--  -->
+<!--  -->
 <section>
 <p>Entonces necesitamos que \(\forall m\) los mínimos de la función \(H^*(u)\) <b>SOLO</b> sean los elementos de \(\mathcal{U}\):
+
 $$ 
-\min_{u\in [-1,1]}H^*(u) = \min_{u\in [-1,1]} \big[ m u + \epsilon\mathcal{L}(u) \big]
+\min_{u\in [-1,1]}H^*(u) = \min_{u\in [-1,1]} \big[ m u + \epsilon\textcolor{orange}{\mathcal{L}(u)} \big]
 $$
 Donde considaremos \(\tau\) fijo.
 </p>
 </section>
+<!--  -->
+<!--  -->
 <section>
-<p>Si llamamos \(N_u\) a la cardinalidad del conjunto \(\mathcal{U} = \{u_1,u_2,\dots,u_{N_u}\}\), podemos proponer el siguiente término de penalización:
-$$ \mathcal{L}(u) = \sum_{k=1}^{N_u - 1} \mathbb{1}_{(u_k,u_{k+1})} recta(u_k,u_{k+1})$$
-Este termino es una aproximación afin de una parábola, cuyos vertices son los elementos de \(\mathcal{U}\)</p>
-
-</section>
-<section>
-<p>En el caso \(\mathcal{U} = \{-1.0,-0.5,0.0,0.5,1.0\}\)</p>
-<img width="60%" src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/10.png" />
+<p>Debemos notar que la función \(H^*(u)\) es una suma de un término lineal con pendiente dependiente del  valor del adjunto \(p^*\) y un término pequeño en comparación con el anterior \(\epsilon \textcolor{orange}{\mathcal{L}(u)}\)</p>
+<p>Existe dos casos bien conocidos para la regularización del control, que vale la pena mencionar:</p>
+<p><ul>
+    <li><b>Tikhonov regularization: </b>
+    $$ \textcolor{orange}{\mathcal{L}(u)} =  u^2$$
+    </li>
+    <li><b>\(L ^1 \) regularization:</b>
+    $$ \textcolor{orange}{\mathcal{L}(u)} =  |u| $$
+    </li>
+</ul>
+</p>
 </section>
 <!--  -->
 <section>
-<p>En el caso \(\mathcal{U} = \{-1.0,-0.5,0.0,0.5,1.0\}\)</p>
-<img width="60%" src="https://djoroya.github.io/SHE-Optimal-Control-slides/img/9.png" />
+<p>Mientras que la regularización de Tikhonov puede tomar valores en un intervalo continuo, la reguralización \(L^1\) solo puede tomar tres valores:</p>
+    <video width="70%" controls="" src="https://djoroya.github.io/SHE-Optimal-Control-slides/videos/beha-L1-L2.mp4"></video>
+     
 </section>
+<!--  -->
+<section>
+<p>Si llamamos \(N_u\) a la cardinalidad del conjunto \(\mathcal{U} = \{u_1,u_2,\dots,u_{N_u}\}\), podemos proponer el siguiente término de penalización:
+
+$$ \textcolor{orange}{\mathcal{L}^d(u)} = \sum_{k=1}^{N_u - 1} \mathbb{1}_{(u_k,u_{k+1})} \frac{(u_k^2-u_{k+1}^2)}{(u_k-u_{k+1})} (u-u_k)$$
+
+Este termino es una aproximación afin de una parábola, cuyos vertices son los elementos de \(\mathcal{U}\). Podemos simplificarlo:
+
+$$ \textcolor{orange}{\mathcal{L}^d(u)} = \sum_{k=1}^{N_u - 1} 
+\mathbb{1}_{(u_k,u_{k+1})} (u_k+u_{k+1}) (u-u_k)$$
+
+</p>
+
+</section>
+<section>
+<p>Si tomamos una discretización de la parábola en el caso \(\mathcal{U} = \{-1,-1/2,0,1/2,1\}\) obtenemos que el control solo puede tomar sus valores en \(\mathcal{U}\)</p>
+    <video width="60%" controls="" src="https://djoroya.github.io/SHE-Optimal-Control-slides/videos/beha-L1-L2-Lp.mp4"></video>
+</section>
+<!--  --> 
+
 </section>
 
 <section>
