@@ -18,7 +18,7 @@ Lp = @(m,u) m*u +   (-2.0<u).*(u<=-1.0) .*  ((-2.0-1.0) .*u - 2.0) + ...
 %
 fig = figure('Units','norm','pos',[0 0 0.5 0.5]);
 clf
-subplot(2,1,1)
+subplot(4,1,[1 2 3])
 xline(-1)
 xline(1)
 
@@ -36,7 +36,7 @@ title('')
 legend([L1_plot,L2_plot,Lp_plot], ...
         {'$\mathcal{L}(u)=|u|$','$\mathcal{L}(u)=u^2$','$\mathcal{L}^d(u)$'}, ...
         'Interpreter','latex', ...
-        'FontSize',15,'Location','bestoutside')
+        'FontSize',15,'Location','north')
 title('$H^*(u) = mu+\mathcal{L}(u)$','Interpreter','latex','FontSize',20)
 
 grid on 
@@ -44,7 +44,7 @@ xlim([-1.5 1.5])
 ylim([-1.5 2])
 mt = 2*sin(pi*tspan);
 
-subplot(2,1,2)
+subplot(4,1,4)
 hold on
 implot = plot(1:Nt,mt,'-','LineWidth',2);
 jmplot = plot(1,mt(1),'.','MarkerSize',35);
@@ -54,7 +54,7 @@ grid on
 yline(0)
 legend(implot,{'$m$'}, ...
         'Interpreter','latex', ...
-        'FontSize',15,'Location','bestoutside')
+        'FontSize',15,'Location','north')
     
 path = "../videos";
 v = VideoWriter(fullfile(path,'beha-L1-L2-Lp'),'MPEG-4');

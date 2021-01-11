@@ -1,6 +1,6 @@
 clear 
 
-Nt = 150;
+Nt = 300;
 tspan = linspace(0,5,Nt);
 
 uspan = linspace(-1.5,1.5,200);
@@ -16,35 +16,35 @@ Lp = @(m,u) m*u +   (-2.0<u).*(u<=-1.0) .*  ((-2.0-1.0) .*u - 2.0) + ...
                     (+1.0<u).*(u<=+2.0) .*  ((+2.0+1.0) .*u - 2.0) ;
 
 %
-fig = figure('Units','norm','pos',[0 0 0.5 0.5]);
+fig = figure('Units','norm','pos',[0 0 0.35 0.5]);
 clf
-subplot(2,1,1)
+subplot(4,1,[1 2 3])
 xline(-1)
 xline(1)
 
 hold on
 
-L1_plot = plot(uspan,L1(0,uspan),'r','LineWidth',1.5);
-L2_plot = plot(uspan,L2(0,uspan),'b','LineWidth',1.5);
-Lp_plot = plot(uspan,Lp(0,uspan),'g','LineWidth',1.5);
+L1_plot = plot(uspan,L1(0,uspan),'r','LineWidth',1.25);
+L2_plot = plot(uspan,L2(0,uspan),'b','LineWidth',1.25);
+Lp_plot = plot(uspan,Lp(0,uspan),'g','LineWidth',1.25);
 
-min_L1 = plot(0,0,'r.','MarkerSize',35);
-min_L2 = plot(0,0,'b.','MarkerSize',35);
+min_L2 = plot(0,0,'b.','MarkerSize',45);
 min_Lp = plot(0,0,'g.','MarkerSize',35);
+min_L1 = plot(0,0,'r.','MarkerSize',25);
 
 title('')
 legend([L1_plot,L2_plot,Lp_plot], ...
         {'$\mathcal{L}(u)=|u|$','$\mathcal{L}(u)=u^2$','$\mathcal{L}^d(u)$'}, ...
         'Interpreter','latex', ...
-        'FontSize',15,'Location','bestoutside')
+        'FontSize',15,'Location','north')
 title('$H^*(u) = mu+\mathcal{L}(u)$','Interpreter','latex','FontSize',20)
 
 grid on 
-xlim([-1.5 1.5])
-ylim([-1.5 2])
+xlim([-1.15 1.15])
+ylim([-1.1 1.5])
 mt = 2*sin(pi*tspan);
 
-subplot(2,1,2)
+subplot(4,1,4)
 hold on
 implot = plot(1:Nt,mt,'-','LineWidth',2);
 jmplot = plot(1,mt(1),'.','MarkerSize',35);
@@ -54,7 +54,7 @@ grid on
 yline(0)
 legend(implot,{'$m$'}, ...
         'Interpreter','latex', ...
-        'FontSize',15,'Location','bestoutside')
+        'FontSize',15,'Location','north')
     
 path = "../videos";
 v = VideoWriter(fullfile(path,'beha-L1-L2-Lp'),'MPEG-4');
